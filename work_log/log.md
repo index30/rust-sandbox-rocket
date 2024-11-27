@@ -19,4 +19,7 @@
   $ cd rust-sandbox-rocket
   $ cargo init
   ```
-- XXX
+
+## アプリケーションの試作
+
+- [公式のGetting started](https://rocket.rs/guide/v0.5/getting-started/)をそのまま実行
