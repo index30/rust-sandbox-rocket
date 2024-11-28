@@ -1,8 +1,8 @@
 #[macro_use] extern crate rocket;
 
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
+#[get("/")] // ルーティング先のディレクトリ構造
+fn index() -> &'static str { // リクエストハンドラー
+    "Hello, world!" // TODO: HTMLを呼び出すには？
 }
 
 #[launch]
