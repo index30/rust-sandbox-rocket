@@ -1,8 +1,9 @@
 #[macro_use] extern crate rocket;
+use rocket_dyn_templates::{Template, context};
 
-#[get("/")] // ルーティング先のディレクトリ構造
-fn index() -> &'static str { // リクエストハンドラー
-    "Hello, world!" // TODO: HTMLを呼び出すには？
+#[get("/")]
+fn index() -> Template {
+    Template::render("index", context! { field: "value" })
 }
 
 #[get("/echo")] // ルーティング先のディレクトリ構造(/sampleにマウントしているので、パスはsample/echoとなる)
@@ -15,4 +16,5 @@ fn rocket() -> _ {
     rocket::build()
         .mount("/", routes![index]) // ルートディレクトリへのマウント
         .mount("/sample", routes![sample]) // sampleディレクトリへのマウント
+        .attach(Template::fairing())
 }
