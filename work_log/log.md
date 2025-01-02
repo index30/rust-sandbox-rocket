@@ -10,16 +10,22 @@
 
 - rust用のツールの準備
   ```bash
-  $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  $ export PATH="$HOME/.cargo/bin:$PATH"
-  $ rustup default stable
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  export PATH="$HOME/.cargo/bin:$PATH"
+  rustup default stable
   ```
 - 既にリポジトリを作成した後だったため、rust用に初期化する
   ```bash
-  $ cd rust-sandbox-rocket
-  $ cargo init
+  cd rust-sandbox-rocket
+  cargo init
   ```
 
 ## アプリケーションの試作
 
 - [公式のGetting started](https://rocket.rs/guide/v0.5/getting-started/)をそのまま実行
+
+## 実行
+
+```bash
+cargo run
+```
