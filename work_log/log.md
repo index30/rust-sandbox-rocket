@@ -58,3 +58,36 @@ cargo run
   - `docker build --build-arg pkg=rust-sandbox-rocket -t (IMAGE_NAME)  .`
 - 動作確認
   - `docker run -it -p 8080:8080 (IMAGE_NAME)`
+
+## Profiles
+
+`Rocket.toml`を作ることで、各面毎にconfigを設定できる。
+
+```rust
+use rocket::serde::Deserialize;
+use rocket::{get, launch, routes};
+
+・・・
+
+#[launch]
+fn rocket() -> _ {
+  let rocket = rocket::build()
+    .mount("/", routes![index]);
+
+    
+    let figment = rocket.figment();
+    #[derive(Deserialize,Debug)]
+    #[serde(crate = "rocket::serde")]
+    struct Config {
+        port: u16,
+        foo: String,
+        //var_env:String,
+    }
+
+    let config: Config = figment.extract().expect("config");
+    println!("{:?}",config);
+
+    rocket
+
+}
+```
